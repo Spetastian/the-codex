@@ -1,0 +1,28 @@
+{
+  "name": "the-codex",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "webpack --config webpack.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-core": "^6.26.3",
+    "babel-plugin-styled-components": "^1.10.0",
+    "source-map-loader": "^0.2.4",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.3.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
+  },
+  "dependencies": {
+    "@types/react": "^16.8.7",
+    "@types/react-dom": "^16.8.2",
+    "@types/styled-components": "^4.1.12",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "styled-components": "^4.1.3"
+  }
+}
