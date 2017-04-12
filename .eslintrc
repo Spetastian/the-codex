@@ -1,0 +1,6 @@
+{
+  "extends": "./node_modules/codestyle/.react-eslintrc",
+  "env": {
+    "browser": true
+  }
+}
