@@ -6,7 +6,7 @@ function getGuideList (){
 
 function getGuide (slug, stepSlug) {
   const { title, firstSteps, steps } = stuff.guides.find(g => g.slug === slug);
-  const { title, slug, description, include, nextSteps } = steps.find(s => s.slug === stepSlug);
+  const { title: stepTitle, description, include, nextSteps } = steps.find(s => s.slug === stepSlug);
   const stepContent = {
 
   };
@@ -21,12 +21,11 @@ function getGuide (slug, stepSlug) {
     });
     return acc;
   }, []),
-  stepContent: stepSlug && getGuideStepContent(slug, stepSlug)
+  //stepContent: stepSlug && getGuideStepContent(slug, stepSlug)
   }
 }
 
 export default {
   getGuide,
-  getGuideList,
-  getGuideStep
+  getGuideList
 }
