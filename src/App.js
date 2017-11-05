@@ -96,7 +96,6 @@ class App extends Component {
                   <Route path="/characters" component={CharactersPage}/>
                 </Switch>
               </article>
-              <aside>aside</aside>
             </div>
           </BrowserRouter>
         </MuiThemeProvider>
