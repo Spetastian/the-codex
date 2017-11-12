@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 
 class CodexPage extends Component {
-
   render() {
     return (
       <div>

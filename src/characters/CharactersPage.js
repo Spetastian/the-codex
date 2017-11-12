@@ -4,7 +4,6 @@ import TextField from 'material-ui/TextField';
 import InterfaceZeroSheet from './components/sheets/InterfaceZeroSheet';
 
 class CharactersPage extends Component {
-
   render() {
     return (
       <div>

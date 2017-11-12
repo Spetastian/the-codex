@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import LoginForm from '../common/components/LoginForm';
 
 class HomePage extends Component {
-
   render() {
     return (
       <div>
