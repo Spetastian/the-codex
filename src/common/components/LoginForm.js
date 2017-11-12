@@ -20,8 +20,8 @@ class LoginForm extends Component {
   }
 
   handleLoginClick = () => {
-    const { username, password } = this.state;
-    this.props.onLogin({ username, password });
+    const { email, password } = this.state;
+    this.props.onLogin({ email, password });
   }
 
   render(){

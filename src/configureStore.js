@@ -6,6 +6,7 @@ import rootEpic from './epics';
 import rootReducer from './reducers';
 
 // Replace with your Firebase config
+
 const firebaseConfig = {
   apiKey: "AIzaSyAkhVpgGONcafTmEuh7xty5UwjDJVMOvHU",
   authDomain: "the-codex-948d3.firebaseapp.com",
@@ -24,12 +25,15 @@ typeof window === 'object' &&
       // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
     }) : compose;
 
-const epicMiddleware = createEpicMiddleware(rootEpic)
-const enhancer = composeEnhancers(
-  reactReduxFirebase(firebaseConfig, reduxFirebaseConfig),
-  applyMiddleware(epicMiddleware)
-);
 
-const store = createStore(rootReducer, enhancer);
-
-export default () => store;
+export default function configureStore() {
+  const epicMiddleware = createEpicMiddleware(rootEpic)
+  const enhancer = composeEnhancers(
+    reactReduxFirebase(firebaseConfig, reduxFirebaseConfig),
+    applyMiddleware(epicMiddleware)
+  );
+  
+  const store = createStore(rootReducer, enhancer);
+  
+  return store;
+}

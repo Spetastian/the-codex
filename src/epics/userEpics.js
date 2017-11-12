@@ -5,6 +5,14 @@ import {
   userLoginFail
 } from '../actions/userActions';
 
-const loginEpic = action$ => action$.ofType(USER_LOGIN);
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
 
-export default combineEpics();
+const loginEpic = action$ =>
+  action$
+    .ofType(USER_LOGIN)
+    .do(console.log)
+    .map(() => ({ type: 'XXX' }));
+
+export default loginEpic;

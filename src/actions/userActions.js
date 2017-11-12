@@ -2,9 +2,9 @@ export const USER_LOGIN = 'USER_LOGIN';
 export const USER_LOGIN_FAIL = 'USER_LOGIN_FAIL';
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
 
-export const userLogin = ({ username, password }) => ({
+export const userLogin = ({ email, password }) => ({
   type: USER_LOGIN,
-  username,
+  email,
   password
 });
 
