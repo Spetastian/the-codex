@@ -1,4 +1,4 @@
-import {APP_INITIATED} from '../actions/appActions'
+import { APP_INITIATED } from '../actions/appActions';
 
 const initialState = {
   initiated: false
@@ -12,7 +12,7 @@ function userReducer(state = initialState, action) {
       };
 
     default:
-    return state;
+      return state;
   }
 }
 

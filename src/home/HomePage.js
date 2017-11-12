@@ -5,11 +5,10 @@ import PropTypes from 'prop-types';
 import RegisterForm from '../common/components/RegisterForm';
 
 class HomePage extends Component {
-
   handleLogin = ({ email, password }) => {
     this.props.userLogin({ email, password });
   };
-  
+
   handleRegister = ({ email, password }) => {
     this.props.userCreate({ email, password });
   };
@@ -29,10 +28,8 @@ const mapStateToProps = ({ user }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  userLogin: ({ email, password }) => 
-    dispatch(userLogin({ email, password })),
-  userCreate: ({ email, password }) => 
-    dispatch(userCreate({ email, password }))
+  userLogin: ({ email, password }) => dispatch(userLogin({ email, password })),
+  userCreate: ({ email, password }) => dispatch(userCreate({ email, password }))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

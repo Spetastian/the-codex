@@ -16,13 +16,21 @@ export const userLogin = ({ email, password }) => ({
   email,
   password
 });
-export const userLoginFail = ({ code, message }) => ({ type: USER_LOGIN_FAIL, code, message  });
+export const userLoginFail = ({ code, message }) => ({
+  type: USER_LOGIN_FAIL,
+  code,
+  message
+});
 export const userLoginSuccess = () => ({ type: USER_LOGIN_SUCCESS });
 
 export const userLogout = () => ({
   type: USER_LOGOUT
 });
-export const userLogoutFail = ({ code, message }) => ({ type: USER_LOGOUT_FAIL, code, message  });
+export const userLogoutFail = ({ code, message }) => ({
+  type: USER_LOGOUT_FAIL,
+  code,
+  message
+});
 export const userLogoutSuccess = () => ({ type: USER_LOGOUT_SUCCESS });
 
 export const userCreate = ({ email, password }) => ({
@@ -30,11 +38,13 @@ export const userCreate = ({ email, password }) => ({
   email,
   password
 });
-export const userCreateFail = ({ code, message }) => ({ type: USER_CREATE_FAIL, code, message  });
+export const userCreateFail = ({ code, message }) => ({
+  type: USER_CREATE_FAIL,
+  code,
+  message
+});
 export const userCreateSuccess = () => ({ type: USER_CREATE_SUCCESS });
 
-export const setUserLoggedIn = (user) => 
-  ({ type: USER_LOGGED_IN, user });
+export const setUserLoggedIn = user => ({ type: USER_LOGGED_IN, user });
 
-export const setUserLoggedOut = () => 
-  ({ type: USER_LOGGED_OUT });
+export const setUserLoggedOut = () => ({ type: USER_LOGGED_OUT });

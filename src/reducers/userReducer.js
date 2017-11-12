@@ -1,14 +1,11 @@
-import {
-  USER_LOGGED_IN,
-  USER_LOGGED_OUT
-} from '../actions/userActions';
+import { USER_LOGGED_IN, USER_LOGGED_OUT } from '../actions/userActions';
 
 const initialState = {
   authenticated: false
 };
 
 function userReducer(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case USER_LOGGED_IN:
       return {
         authenticated: true

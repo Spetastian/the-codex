@@ -13,10 +13,7 @@ import {
   setUserLoggedOut
 } from '../actions/userActions';
 
-import {
-  APP_INIT,
-  appInitiated
-} from '../actions/appActions';
+import { APP_INIT, appInitiated } from '../actions/appActions';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
@@ -27,75 +24,69 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 
-const createAuthStateChangeObservable = (firebase) =>
-  Observable.create((observer) => {
+const createAuthStateChangeObservable = firebase =>
+  Observable.create(observer => {
     firebase.auth().onAuthStateChanged(user => {
       observer.next(user);
     });
   });
 
-
 const registerEpic = (action$, store, { firebase }) =>
   action$
     .ofType(USER_CREATE)
-    .mergeMap(({ email, password }) => 
+    .mergeMap(({ email, password }) =>
       Observable.fromPromise(
-        firebase.auth()
-          .createUserWithEmailAndPassword(email, password)
+        firebase.auth().createUserWithEmailAndPassword(email, password)
       )
     )
     .map(() => userCreateSuccess())
     .catch(err => {
-      console.log('Something went wrong')
-      console.error(err)
-      return Observable.of(userCreateFail(err))
-    })
+      console.log('Something went wrong');
+      console.error(err);
+      return Observable.of(userCreateFail(err));
+    });
 
 const loginEpic = (action$, store, { firebase }) =>
   action$
     .ofType(USER_LOGIN)
-    .mergeMap(({ email, password }) => 
+    .mergeMap(({ email, password }) =>
       Observable.fromPromise(
-        firebase.auth()
-          .signInWithEmailAndPassword(email, password)
+        firebase.auth().signInWithEmailAndPassword(email, password)
       )
     )
     .map(() => userLoginSuccess())
     .catch(err => {
-      console.log('Something went wrong')
-      console.error(err)
-      return Observable.of(userLoginFail(err))
-    })
+      console.log('Something went wrong');
+      console.error(err);
+      return Observable.of(userLoginFail(err));
+    });
 
 const logoutEpic = (action$, store, { firebase }) =>
   action$
     .ofType(USER_LOGOUT)
-    .mergeMap(({ email, password }) => 
-      Observable.fromPromise(
-        firebase.auth().signOut()
-      )
+    .mergeMap(({ email, password }) =>
+      Observable.fromPromise(firebase.auth().signOut())
     )
     .map(() => userLogoutSuccess())
     .catch(err => {
-      console.log('Something went wrong')
-      console.error(err)
-      return Observable.of(userLogoutFail(err))
-    })
+      console.log('Something went wrong');
+      console.error(err);
+      return Observable.of(userLogoutFail(err));
+    });
 
 const authStateChangeEpic = (action$, store, { firebase }) =>
-  action$.ofType(APP_INIT)
-    .mergeMap(() => Observable.merge(
-      createAuthStateChangeObservable(firebase)
-      .map(user => {
-        if(user) {
+  action$.ofType(APP_INIT).mergeMap(() =>
+    Observable.merge(
+      createAuthStateChangeObservable(firebase).map(user => {
+        if (user) {
           return setUserLoggedIn(user);
-        }
-        else {
+        } else {
           return setUserLoggedOut();
         }
       }),
       Observable.of(appInitiated())
-    ));
+    )
+  );
 
 export default combineEpics(
   registerEpic,
