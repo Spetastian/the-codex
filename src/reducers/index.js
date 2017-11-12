@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { firebaseStateReducer } from 'react-redux-firebase';
 import userReducer from './userReducer';
+import appReducer from './appReducer';
 
 export default combineReducers({
-  user: userReducer,
-  firebase: firebaseStateReducer
+  app: appReducer,
+  user: userReducer
 });

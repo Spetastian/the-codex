@@ -1,11 +1,8 @@
-import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
-import { reactReduxFirebase, firebaseStateReducer } from 'react-redux-firebase';
+import firebase from 'firebase';
 import rootEpic from './epics';
 import rootReducer from './reducers';
-
-// Replace with your Firebase config
 
 const firebaseConfig = {
   apiKey: "AIzaSyAkhVpgGONcafTmEuh7xty5UwjDJVMOvHU",
@@ -16,7 +13,7 @@ const firebaseConfig = {
   messagingSenderId: "802551158182"
 };
 
-const reduxFirebaseConfig = { userProfile: 'users' };
+firebase.initializeApp(firebaseConfig);
 
 const composeEnhancers =
 typeof window === 'object' &&
@@ -27,9 +24,10 @@ typeof window === 'object' &&
 
 
 export default function configureStore() {
-  const epicMiddleware = createEpicMiddleware(rootEpic)
+  const epicMiddleware = createEpicMiddleware(rootEpic, {
+    dependencies: { firebase }
+  });
   const enhancer = composeEnhancers(
-    reactReduxFirebase(firebaseConfig, reduxFirebaseConfig),
     applyMiddleware(epicMiddleware)
   );
   
