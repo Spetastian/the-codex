@@ -1,10 +1,13 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import CodexView from "./views/CodexView";
+import GamesView from "./views/GamesView";
+import AppContainer from "./components/layout/AppContainer";
 
-import { Hello } from "./components/Hello";
-import SearchBox from "./components/SearchBox";
-
-ReactDOM.render(
-    <SearchBox value="Testtest" />,
-    document.getElementById("example")
+const App = () => (
+  <AppContainer>
+    <GamesView />
+  </AppContainer>
 );
+
+ReactDOM.render(<App />, document.getElementById("app"));
